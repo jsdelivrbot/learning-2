@@ -1,0 +1,11 @@
+//The following takes an url and makes a request to that url
+//It will write all data items to the console.
+var http = require("http");
+
+http.get(process.argv[2],function(response){
+	response.setEncoding("utf8");
+	response.on("data", function(data){
+		console.log(data);
+	});
+	response.on('error', console.error);
+});
