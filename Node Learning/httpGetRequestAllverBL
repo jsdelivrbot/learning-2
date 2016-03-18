@@ -1,0 +1,23 @@
+//The following takes an url and makes a request to that url
+//It will write all data items to the console.
+var http = require("http");
+var bl = require("bl");
+
+http.get(process.argv[2],function(response){
+	response.pipe(bl(function(err,data){
+		console.log(data.toString().length);
+		console.log(data.toString());
+	}));
+});
+
+/* http.get(process.argv[2],function(response){
+	response.setEncoding("utf8");
+	response.on("data", function(dataIN){
+		str += dataIN;
+
+	});
+	response.on('end', function(){
+		console.log(str.length);
+		console.log(str);
+	});
+}); */
